@@ -6,11 +6,13 @@ import Header from './components/header/Header'
 import WeatherBoard from './components/Weather/WeatherBoard'
 import { WeatherProvider } from './provider'
 import { FavouriteProvider } from './provider'
+import { LocationProvider } from './provider'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+    <LocationProvider>
     <WeatherProvider>
       <FavouriteProvider> 
     <div className="place-items-center grid h-screen">
@@ -23,7 +25,7 @@ function App() {
     </div>
     </FavouriteProvider>
     </WeatherProvider>
-
+    </LocationProvider>
   )
 }
 
