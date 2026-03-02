@@ -1,54 +1,60 @@
-const data=[
+const data = [
     {
-        location:"Dhaka",
-        latitude: 23.8103,
-        longitude: 90.4125
+        location: "London",
+        latitude: 51.5073219,
+        longitude: -0.1276474,
     },
     {
-        location:"Rangpur",
-        latitude: 25.7439,
-        longitude: 89.2752
+        location: "Kolkata",
+        latitude: 22.5726723,
+        longitude: 88.3638815,
     },
     {
-        location:"Europe",
-        latitude: 54.5260,
-        longitude: 15.2551
+        location: "Dhaka",
+        latitude: 23.777176,
+        longitude: 90.399452,
     },
     {
-        location:"Asia",
-        latitude: 34.0479,
-        longitude: 100.6197
+        location: "Singapore",
+        latitude: 1.2899175,
+        longitude: 103.8519072,
     },
     {
-        location:"Africa",
-        latitude: -8.7832,
-        longitude: 34.5085  
+        location: "New York",
+        latitude: 40.7127281,
+        longitude: -74.0060152,
     },
     {
-        location:"North America",
-        latitude: 54.5260,
-        longitude: -105.2551
+        location: "Toronto",
+        latitude: 43.6534817,
+        longitude: -79.3839347,
     },
-
-
 ];
 
-function getLocations(){
+function getLocations() {
     return data;
 }
-function getLocationByName(loaction){
-    if(!location) return null;
-    const filtered =data.filter((item) => item.location === loaction);
 
-    if(filtered.length > 0){
+function getLocationByName(location) {
+    if (!location) return null;
+
+    // normalize case so "london" or "LONDON" still works
+    const search = location.trim().toLowerCase();
+
+    const filtered = data.filter((item) =>
+        item.location.toLowerCase() === search
+    );
+
+    if (filtered.length > 0) {
         return filtered[0];
-    }else{
-        const defaultLocation ={
-            location: "Chattogram",
-            latitude: 22.3569,
-            longitude: 91.7832 
-        }
+    } else {
+        const defaultLocation = {
+            location: "",
+            latitude: 0,
+            longitude: 0,
+        };
         return defaultLocation;
-        }
     }
-export {getLocations, getLocationByName};
+}
+
+export { getLocationByName, getLocations };

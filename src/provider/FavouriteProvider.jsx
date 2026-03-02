@@ -9,7 +9,7 @@ const FavouriteProvider = ({ children }) => {
                 latitude: latitude,
                 longitude: longitude,
                 location: location,
-            }
+            },
         ]);
     };
 
